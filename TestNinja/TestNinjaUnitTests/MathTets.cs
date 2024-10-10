@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Linq;
 using Math = TestNinja.Fundamentals.Math;
 
 namespace TestNinja.UnitTests
@@ -14,6 +15,9 @@ namespace TestNinja.UnitTests
             _math = new Math();
         }
 
+        /// <summary>
+        /// Ignoring Tests.
+        /// </summary>
         [Test]
         [Ignore("Because I wanted to!")]
         public void Add_WhenCalled_ReturnTheSumOfArguments()
@@ -56,6 +60,26 @@ namespace TestNinja.UnitTests
             var result = _math.Max(firstArgument, secondArgument);
 
             Assert.That(result, Is.EqualTo(expectedResult));
+        }
+
+        /// <summary>
+        /// Testing Arrays and Collections.
+        /// </summary>
+        [Test]
+        public void GetOddNumbers_LimitIsGreaterThanZero_ReturnOddNumbersUoToLimit()
+        {
+            var result = _math.GetOddNumbers(5);
+
+            Assert.That(result, Is.Not.Empty);
+            Assert.That(result.Count(), Is.EqualTo(3));
+
+            //Assert.That(result, Does.Contain(1));
+            //Assert.That(result, Does.Contain(3));
+            //Assert.That(result, Does.Contain(5));
+            Assert.That(result, Is.EquivalentTo(new[] { 1, 3, 5 }));
+
+            Assert.That(result, Is.Ordered);
+            Assert.That(result, Is.Unique);
         }
     }
 }
