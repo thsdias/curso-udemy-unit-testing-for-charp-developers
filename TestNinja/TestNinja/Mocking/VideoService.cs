@@ -1,20 +1,68 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.IO;
 using System.Linq;
-using Newtonsoft.Json;
 
 namespace TestNinja.Mocking
 {
     public class VideoService
     {
+        /*
+         * Dependency Injection via Method Parameters.
+         * 
+        
+        public string ReadVideoTitle(IFileReader fileReader)
+        {
+            var str = fileReader.Read("video.txt");
+            var video = JsonConvert.DeserializeObject<Video>(str);
+        
+            if (video == null)
+                    return "Error parsing the video.";
+            
+            return video.Title;
+        }
+        */
+
+        /*
+         * Dependency Injection via Properties.
+         * 
+         
+        public IFileReader FileReader { get; set; }
+
+        public VideoService()
+        {
+            FileReader = new FileReader();
+        }
+
         public string ReadVideoTitle()
         {
-            var str = File.ReadAllText("video.txt");
+            var str = FileReader.Read("video.txt");
             var video = JsonConvert.DeserializeObject<Video>(str);
+
             if (video == null)
                 return "Error parsing the video.";
+            
+            return video.Title;
+        }
+        */
+
+        // Dependency Injection via Constructor.
+        private IFileReader _fileReader;
+
+        public VideoService(IFileReader fileReader = null)
+        {
+            _fileReader = fileReader ?? new FileReader();
+        }
+
+        public string ReadVideoTitle()
+        {
+            var str = _fileReader.Read("video.txt");
+            var video = JsonConvert.DeserializeObject<Video>(str);
+
+            if (video == null)
+                return "Error parsing the video.";
+
             return video.Title;
         }
 
