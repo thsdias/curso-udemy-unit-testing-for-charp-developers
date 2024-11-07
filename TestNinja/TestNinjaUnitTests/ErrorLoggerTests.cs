@@ -1,9 +1,8 @@
-﻿using NUnit.Framework;
-using NUnit.Framework.Internal;
 using System;
+using NUnit.Framework;
 using TestNinja.Fundamentals;
 
-namespace TestNinja.UnitTests
+namespace TestNinjaUnitTests
 {
     [TestFixture]
     public class ErrorLoggerTests
