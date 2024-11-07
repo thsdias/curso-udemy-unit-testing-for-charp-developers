@@ -1,8 +1,8 @@
-﻿using Moq;
+using Moq;
 using NUnit.Framework;
 using TestNinja.Mocking;
 
-namespace TestNinja.UnitTests.Mocking
+namespace TestNinjaUnitTests.Mocking
 {
     [TestFixture]
     public class VideoServiceMokingTests

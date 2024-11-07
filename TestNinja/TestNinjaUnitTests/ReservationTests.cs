@@ -1,8 +1,7 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using TestNinja.Fundamentals;
-using Assert = NUnit.Framework.Assert;
 
-namespace TestNinja.UnitTests
+namespace TestNinjaUnitTests
 {
     [TestFixture]
     public sealed class ReservationTests

@@ -1,11 +1,11 @@
-using NUnit.Framework;
 using System.Linq;
+using NUnit.Framework;
 using Math = TestNinja.Fundamentals.Math;
 
-namespace TestNinja.UnitTests
+namespace TestNinjaUnitTests
 {
     [TestFixture]
-    public class MathTets
+    public class MathTests
     {
         private Math _math;
 
